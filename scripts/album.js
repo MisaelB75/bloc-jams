@@ -30,6 +30,22 @@
      ]
  };
 
+ //Example Album #3
+ var albumFried = {
+     title: 'Transport Me',
+     artist: 'John Chen',
+     label: 'EMI',
+     year: '2016',
+     albumArtUrl: 'assets/images/album_covers/07.png',
+     songs: [
+         { title: 'Hell to operate', duration: '5:01' },
+         { title: 'Ring of Water', duration: '4:11' },
+         { title: 'Fits in your Mansion', duration: '3:21'},
+         { title: 'Hear me now', duration: '2:31' },
+         { title: 'Wrong email', duration: '1:41'}
+     ]
+ };
+
  var createSongRow = function(songNumber, songName, songLength) {
     var template =
        '<tr class="album-view-song-item">'
@@ -42,7 +58,6 @@
     return template;
 };
 
- var setCurrentAlbum = function(album) {
 
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
@@ -50,15 +65,13 @@
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
-
+var setCurrentAlbum = function(album) {
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
      albumImage.setAttribute('src', album.albumArtUrl);
 
-
      albumSongList.innerHTML = '';
-
 
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
@@ -67,4 +80,14 @@
 
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+
+      var albums = [albumPicasso, albumMarconi, albumFried];
+      albumImage.addEventListener("click", function(event) {
+        for (var i=0; i <= albums.length; i++){
+          setCurrentAlbum(albums[i]);
+          if (i == albums.length){
+              i=0;
+            }
+       }
+    });
  };
