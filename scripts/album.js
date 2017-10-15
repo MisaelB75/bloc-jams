@@ -61,15 +61,36 @@ var createSongRow = function(songNumber, songName, songLength) {
 };
 
 //Below is a function that keeps traversing the DOM upward until a parent with a specified class name is found.
-    var findParentByClassName = function(element, targetClass) {
-      if (element) {
-        var currentParent = element.parentElement;
-        while (currentParent.className !== targetClass && currentParent.className !== null){
-          currentParent = currentParent.parentElement;
-        }
-        return currentParent;
-}
+//    var findParentByClassName = function(element, targetClass) {
+//      if (element) {
+//        var currentParent = element.parentElement;
+//        while (currentParent.className !== targetClass && currentParent.className !== null){
+//          currentParent = currentParent.parentElement;
+//        }
+//        return currentParent;
+//}
+//};
+
+//Below is the assignment that adjusts the above function to check for situations
+//where an ancestor element with the specified class name didn't exist, and it
+//checks to see if the starting element has a parent.
+//If a parent does not exists, then console.log a string that says "No parent found".
+//If no parent with the given class name, then say "No parent found with that class name".
+var findParentByClassName = function(element, targetClass) {
+  if (element) {
+    var currentParent = element.parentElement;
+    while (currentPArent && currentParent.className !== targetClass && currentParent.className !== null){
+      currentParent = currentParent.parentElement;
+    }
+    if (currentParent && (currentParent.className === targetClass)){
+      alert("No parent found with that class name.");
+    }
+    return currentParent;
+}   else {
+      alert("No parent found.");
+    }
 };
+
 
 //The below function takes an element and based on that element's class name(s),
 // uses a switch statement that returns the element with the .song-item-number class.
