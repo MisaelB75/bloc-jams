@@ -1,7 +1,7 @@
 var pointsArray = document.getElementsByClassName('point');
 
 var animatePoints = function(points) {
-  var revealPoint = function(pnt) {
+var revealPoint = function(pnt) {
     points[pnt].style.opacity = 1;
     points[pnt].style.transform = "scaleX(1) translateY(0)";
     points[pnt].style.msTransform = "scaleX(1) translateY(0)";
@@ -17,8 +17,6 @@ window.onload = function() {
  if (window.innerHeight > 950){
    animatePoints(pointArray);
  }
-
-
 
   var sellingPoints = document.getElementsByClassName('selling-points')[0];
   var scrollDistance = sellingPoints.getBoundingClientRect().top - window.innerHeight + 200;
