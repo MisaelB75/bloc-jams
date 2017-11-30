@@ -267,6 +267,28 @@ var togglePlayFromPlayerBar = function() {
     }
 };
 
+var setCurrentTimeInPlayerBar = function(currentTime) {
+  var $currentTimeElement = $('.seek-control .current-time');
+    $currentTimeElement.text(currentTime);
+};
+
+var setTotalTimeInPlayerBar = function(totalTime) {
+  var $totalTimeElement = $('.seek-control .total-time');
+    $totalTimeElement.text(totalTime);
+};
+
+var filterTimeCode = function(timeInSeconds) {
+  var seconds = Number.parseFloat(timeInSeconds);
+  var wholeSeconds = Math.floor(seconds);
+  var minutes = Math.floor(wholeSeconds / 60);
+  var remainingSeconds = wholeSeconds % 60;
+  var output = minutes + ':';
+     if (remainingSeconds < 10) {
+          output += '0';
+        }
+    output += remainingSeconds;
+    return output;
+};
 
 var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
